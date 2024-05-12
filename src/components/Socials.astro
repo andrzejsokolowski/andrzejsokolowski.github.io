@@ -1,0 +1,31 @@
+---
+import { Github, Youtube, Linkedin, Twitter } from 'lucide-astro'
+const socials = [
+  {
+    name: 'GitHub',
+    Icon: Github,
+    href: 'https://github.com/andrzejsokolowski',
+  },
+  {
+    name: 'LinkedIn',
+    Icon: Linkedin,
+    href: 'https://www.linkedin.com/in/ansok99/',
+  },
+]
+---
+
+<div class="flex flex-row flex-wrap items-center gap-4">
+  {
+    socials.map(({ name, Icon, href }) => (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2"
+        title={name}
+      >
+        <Icon size={24} />
+      </a>
+    ))
+  }
+</div>

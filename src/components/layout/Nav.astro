@@ -1,0 +1,106 @@
+---
+const navLinks: Array<{
+  name: string
+  url: string
+  target?: HTMLAnchorElement['target']
+}> = [
+  {
+    name: 'Contact',
+    url: '/contact',
+  },
+  {
+    name: 'CV',
+    url: '/cv',
+    target: '_blank',
+  },
+  {
+    name: 'Resume',
+    url: '/resume',
+    target: '_blank',
+  },
+]
+---
+
+<nav class="col-span-full grid w-full grid-cols-subgrid max-md:place-items-center">
+  <a href="/" class="w-fit text-2xl font-bold" transition:name="nav-logo">
+    Andrzej <span class="whitespace-nowrap">Sokołowski</span>
+  </a>
+  <ul
+    class="flex flex-row items-center justify-center gap-4 font-semibold md:gap-8 lg:gap-16"
+    transition:name="nav-links"
+  >
+    {
+      navLinks.map((link) => {
+        if (link.url.startsWith('/')) {
+          return (
+            <li class="link">
+              <a href={link.url} target={link.target}>
+                {link.name}
+              </a>
+            </li>
+          )
+        }
+
+        return (
+          <li class="link">
+            <a href={link.url} target={link.target} rel="noopener noreferrer">
+              {link.name}
+            </a>
+          </li>
+        )
+      })
+    }
+  </ul>
+</nav>
+
+<style>
+  @keyframes slideIn {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  @keyframes slideOut {
+    0% {
+      margin-left: 0;
+      width: 100%;
+    }
+    100% {
+      margin-left: 100%;
+      width: 0;
+    }
+  }
+
+  @keyframes hasHovered {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  .link::after() {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    animation:
+      slideOut 0.3s ease-in-out 1 forwards,
+      hasHovered 1ms paused;
+    @apply bg-accent-blue;
+  }
+
+  .link:hover::after() {
+    content: '';
+    display: block;
+    height: 2px;
+    animation:
+      slideIn 0.3s ease-in-out 1 forwards,
+      hasHovered 1ms;
+    @apply bg-accent-blue;
+  }
+</style>
