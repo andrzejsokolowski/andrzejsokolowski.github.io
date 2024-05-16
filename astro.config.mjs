@@ -19,7 +19,7 @@ export default defineConfig({
     imageService: true,
   }),
   integrations: [tailwind(), mdx(), sitemap()],
-  site: 'https://www.ihh.dev',
+  site: 'https://www.andrzejsokolowski.github.io',
   redirects: {
     '/contact': 'https:///www.linkedin.com/in/ansok99/',
     '/cv': '/cv.pdf',
